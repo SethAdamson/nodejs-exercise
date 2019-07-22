@@ -13,6 +13,7 @@ const {
 
 app.get('/people', ctrl.getPeople);
 app.get('/planets', ctrl.getPlanets);
+app.get('/planets2', ctrl.getPlanets2);
 
 
 app.listen(SERVER_PORT, () => {

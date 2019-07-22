@@ -41,6 +41,7 @@ module.exports = {
         res.status(200).send(peopleArr);
 
     },
+
     getPlanets: async (req, res) => {
         const planetArr = await getAll('https://swapi.co/api/planets');
         let peopleArr = await getAll('https://swapi.co/api/people');
@@ -53,6 +54,26 @@ module.exports = {
             planet.residents = newRes;
             return planet;
         });
+
         res.status(200).send(finalMap);
+        
     },
-}
+
+    getPlanets2: async (req, res) => {
+        const planetArr = await getAll('https://swapi.co/api/planets');
+
+        for (let i = 0; i < planetArr.length; i++){
+            const planet = planetArr[i];
+            const { residents } = planet
+            const newRes = [];
+            for (let k = 0; k < residents.length; k++) {
+                const personUrl = residents[k];
+                const result = await axios.get(personUrl);
+                newRes.push(result.data.name);
+            }
+            planet.residents = newRes;
+        }
+
+        res.status(200).send(planetArr);
+
+    },}
