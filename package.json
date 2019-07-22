@@ -1,0 +1,10 @@
+{
+    "name": "node-js-swapi",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "axios": "^0.18.0",
+        "dotenv": "^6.0.0",
+        "express": "^4.16.3"
+    }
+}
